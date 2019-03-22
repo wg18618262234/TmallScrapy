@@ -1,0 +1,10 @@
+1、创建一个工程
+scrapy startproject Tmall
+
+2、创建爬虫程序
+cd Tmall
+scrapy genspider goods tmall.com
+
+ 9、执行爬虫
+cd Tmall
+scrapy crawl goods
