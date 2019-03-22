@@ -16,7 +16,7 @@ class GoodsSpider(scrapy.Spider):
     #     # 'Referer': 'http://list.tmall.com/search_product.htm?spm=a223c.7814651.navcategory176.1&cat=50025145&from=nav_ct_176_8141_8142',
     # }
     start_urls = [
-        'https://ochirly.m.tmall.com/shop/shop_auction_search.do?spm=a2141.7631565.0.0.2eb75016zyS8Ea&suid=272205633&sort=s&p=1&page_size=12&from=h5&shop_id=58674200&ajson=1&_tm_source=tmallsearch']
+        'https://ochirly.m.tmall.com/shop/shop_auction_search.do?p=1&page_size=12&shop_id=58674200']
 
     def parse(self, response):
         open('goodsinfo.txt', 'wb').write(response.text.encode('utf8'))
@@ -31,7 +31,7 @@ class GoodsSpider(scrapy.Spider):
         for p in range(1, int(total_page) + 1):
             print(p)
             yield scrapy.Request(
-                url='https://ochirly.m.tmall.com/shop/shop_auction_search.do?spm=a2141.7631565.0.0.2eb75016zyS8Ea&suid=272205633&sort=s&page_size=12&from=h5&shop_id=58674200&ajson=1&_tm_source=tmallsearch&p=' + str(
+                url='https://ochirly.m.tmall.com/shop/shop_auction_search.do?page_size=12&shop_id=58674200&p=' + str(
                     p),
                 callback=self.parse2, dont_filter=True)
 
